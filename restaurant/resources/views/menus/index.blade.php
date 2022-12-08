@@ -1,4 +1,5 @@
 <x-guest-layout>
+   
     <div class="container w-full px-5 py-6 mx-auto">
         <div class="grid lg:grid-cols-4 gap-y-6">
             @foreach($menus as $menu)
@@ -14,10 +15,16 @@
                   
                   <span class="text-xl text-green-600">&#8358;{{$menu->price}}</span>
                 </div>
-              </div>
+                <a href="{{ route('add.to.cart', $menu->id) }}"> <button type="submit" class="bg-lime-400 text-green-600 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mx-4 m-2">
+                      Add to cart
+                    </button></a>
+            </div>
+            
           @endforeach
-         
-          </div>
-  
         </div>
+         
+          
+  
+    </div>
+ 
 </x-guest-layout>

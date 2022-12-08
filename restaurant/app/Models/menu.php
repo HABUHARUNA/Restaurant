@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class menu extends Model
 {
     use HasFactory;
-    protected $fillable =(['name','image','description','price']);
+    protected $fillable =(['name','image','description','price','quantity']);
     public function category(){
         return $this->belongsToMany(category::class,'category_menu');
     }

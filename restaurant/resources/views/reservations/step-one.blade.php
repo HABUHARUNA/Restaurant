@@ -24,7 +24,7 @@
                                     </label>
                                     <div class="mt-1">
                                         <input type="text" id="first_name" name="first_name"
-                                            value="{{ $reservation->first_name ?? '' }}"
+                                            value="{{old('first_name')}}"
                                             class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                     @error('first_name')
@@ -36,7 +36,7 @@
                                     </label>
                                     <div class="mt-1">
                                         <input type="text" id="last_name" name="last_name"
-                                            value="{{ $reservation->last_name ?? '' }}"
+                                            value="{{old('last_name')}}"
                                             class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                     @error('last_name')
@@ -47,7 +47,7 @@
                                     <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                                     <div class="mt-1">
                                         <input type="email" id="email" name="email"
-                                            value="{{ $reservation->email ?? '' }}"
+                                            value="{{old('email')}}"
                                             class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                     @error('email')
@@ -60,7 +60,7 @@
                                     </label>
                                     <div class="mt-1">
                                         <input type="text" id="tel_number" name="tel_number"
-                                            value="{{ $reservation->tel_number ?? '' }}"
+                                            value="{{old('tel_number')}}"
                                             class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                     @error('tel_number')
@@ -89,7 +89,7 @@
                                     </label>
                                     <div class="mt-1">
                                         <input type="number" id="guest_number" name="guest_number"
-                                            value="{{ $reservation->guest_number ?? '' }}"
+                                            value="{{old('guest_number')}}"
                                             class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                                     </div>
                                     @error('guest_number')

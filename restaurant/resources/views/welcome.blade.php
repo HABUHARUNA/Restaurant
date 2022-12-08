@@ -126,6 +126,9 @@
           <div class="flex items-center justify-between p-4">
             <span class="text-xl text-green-600">&#8358;{{$menu->price}}</span>
           </div>
+          <a href="{{ route('add.to.cart', $menu->id) }}"><button type="submit" class="bg-lime-400 text-green-600 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow mx-4 m-2">
+            Add to cart
+          </button></a>
         </div>
         @endforeach
 

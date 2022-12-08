@@ -41,19 +41,26 @@ class MenuController extends Controller
      */
     public function store(MenuStoreRequest $request)
     {
-        $image = $request->file('image')->store('public/menus');
-        $menu = menu::create([
-        'name'=>$request->name,
-        'description'=>$request->description,
-        'price'=>$request->price,
-        'image'=>$image
-        ]);// 
-        if($request->has('categories')){
-            $menu->category()->attach($request->categories);
-         
-        };
-        return to_route('Admin.menus.index')->with('success','Menu created successfully');//
+        try {
+            $image = $request->file('image')->store('public/menus');
+            $menu = menu::create([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'quantity'=>$request->quantity,
+            'image'=>$image
+            ]);// 
+            if($request->has('categories')){
+                $menu->category()->attach($request->categories);
+             
+            };
+            return to_route('Admin.menus.index')->with('success','Menu created successfully');//
+        
+        } catch (\Throwable $th) {
+            return back()->with('danger',$th->getMessage());
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -91,24 +98,32 @@ class MenuController extends Controller
             'name'=> 'required',
             'description'=> 'required',
             'price'=>'required',
+            'quantity'=>'required'
         ]);//
         $image = $menu->image;
         if($request->hasFile('image')){
             storage::delete($menu->image);
             $image = $request->file('image')->store('public/menus');
         }
-        $menu->update([
-            'name'=> $request->name,
-            'description'=> $request->description,
-            'image'=> $image,
-            'price'=> $request->price,
-            
-        ]);
-        if($request->has('categories')){
-            $menu->category()->sync($request->categories);
-         
-        };
-        return to_route('Admin.menus.index')->with('success','Menu updated successfully');;  //
+        try {
+            //code...
+            $menu->update([
+                'name'=> $request->name,
+                'description'=> $request->description,
+                'image'=> $image,
+                'quantity'=>$request->quantity,
+                'price'=> $request->price,
+                
+            ]);
+            if($request->has('categories')){
+                $menu->category()->sync($request->categories);
+             
+            };
+            return to_route('Admin.menus.index')->with('success','Menu updated successfully'); 
+        } catch (\Throwable $th) {
+            return back()->with('danger',$th->getMessage());
+        }
+//
     }
 
     /**
