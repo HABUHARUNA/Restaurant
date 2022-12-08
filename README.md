@@ -1,2 +1,2 @@
 # Restaurant
-Restaurant reservation system, with a art functionality and online payment
+Restaurant reservation system, with a Cart functionality and online payment
